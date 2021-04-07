@@ -5,7 +5,7 @@
     <NODENAME_REGEX>.*.oscar.ccv.brown.edu</NODENAME_REGEX>
     <OS>LINUX</OS>
     <COMPILERS>intel</COMPILERS>
-    <MPILIBS>mvapich2</MPILIBS>
+    <MPILIBS>openmpi</MPILIBS>
     <CIME_OUTPUT_ROOT>/gpfs/scratch/$USER</CIME_OUTPUT_ROOT>
     <DIN_LOC_ROOT>/gpfs/data/shared/cesm/input_data</DIN_LOC_ROOT>
     <DIN_LOC_ROOT_CLMFORC>/gpfs/data/shared/cesm/input_data/atm/datm7</DIN_LOC_ROOT_CLMFORC>
@@ -14,21 +14,21 @@
     <CCSM_CPRNC>/gpfs/scratch/$USER/cesm_tools/ccsm_cprnc/cprnc</CCSM_CPRNC>
     <GMAKE_J>4</GMAKE_J>
     <BATCH_SYSTEM>slurm</BATCH_SYSTEM>
-    <SUPPORTED_BY>hkershaw</SUPPORTED_BY>
-    <MAX_TASKS_PER_NODE>12</MAX_TASKS_PER_NODE>
-    <MAX_MPITASKS_PER_NODE>12</MAX_MPITASKS_PER_NODE>
+    <SUPPORTED_BY>phall1</SUPPORTED_BY>
+    <MAX_TASKS_PER_NODE>32</MAX_TASKS_PER_NODE>
+    <MAX_MPITASKS_PER_NODE>32</MAX_MPITASKS_PER_NODE>
     <mpirun mpilib="default">
       <executable>srun</executable>
       <arguments>
-        <arg name="pmi">--mpi=pmi2</arg>
+        <arg name="pmi">--mpi=pmix</arg>
         <arg name="num_tasks"> -n {{ total_tasks }}</arg>
       </arguments>
     </mpirun>
     <module_system type="none"/>
     <environment_variables>
       <env name="OMP_STACKSIZE">64M</env>
-      <env name="NETCDF_PATH">/gpfs/runtime/opt/netcdf/4.7.0_intel2019.3</env>
-      <env name="MKL_PATH">/gpfs/runtime/opt/intel/2019.3/mkl/lib/intel64</env>
+      <env name="NETCDF_PATH">/gpfs/runtime/opt/netcdf/4.7.4_intel_2020.2_hdf5_1.12.0</env>
+      <env name="MKL_PATH">/gpfs/runtime/opt/intel/2020.2/mkl/lib/intel64</env>
     </environment_variables>
   </machine>
 
